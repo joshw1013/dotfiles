@@ -104,3 +104,26 @@ window#waybar {
 #custom-arch:hover {
   color: #1793d1;
 }
+
+/* General styling for the menu */
+/* For some reason there is white along the border, don't know if I can fix */
+menu {
+  background-color: #353535;
+  border: 1px solid #000;
+  border-radius: 5px;
+  padding: 5px;
+}
+
+/* Styling for each menu item */
+menu menuitem {
+  color: #eee;
+  padding: 10px 20px;
+  border-radius: 3px;
+  transition: background-color 0.2s ease-in-out;
+}
+
+/* Styling for a menu item when it's hovered over */
+menu menuitem:hover {
+  background-color: #555;
+  color: #fff;
+}

@@ -197,6 +197,6 @@
   "clock": {
     "format": "{:%I:%M %p | %B %e} ",
     "tooltip-format": "<big>{:%B %Y}</big>\n<tt><small>{calendar}</small></tt>",
-    "format-alt": "{:%m-%d-%Y}",
+    "format-alt": "{:%A | %m-%d-%Y}",
   },
 }
