@@ -24,7 +24,7 @@ window#waybar {
   border-radius: 15px;
 }
 .modules-left {
-  padding: 0;
+  padding: 0 5;
 }
 .modules-center {
   padding: 0 10px;
@@ -96,7 +96,6 @@ window#waybar {
 }
 
 #custom-arch {
-  margin-left: 5px;
   padding: 0 10px;
   font-size: 25px;
   transition: color 0.5s;

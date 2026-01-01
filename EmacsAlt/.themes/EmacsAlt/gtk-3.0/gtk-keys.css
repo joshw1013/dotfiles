@@ -43,8 +43,10 @@
   bind "<shift><alt>f" { "move-cursor" (words, 1, 1) };
 
   bind "<ctrl>a" { "move-cursor" (paragraph-ends, -1, 0) };
+  bind "<super>a" { "move-cursor" (paragraph-ends, -1, 0) };
   bind "<shift><ctrl>a" { "move-cursor" (paragraph-ends, -1, 1) };
   bind "<ctrl>e" { "move-cursor" (paragraph-ends, 1, 0) };
+  bind "<super>e" { "move-cursor" (paragraph-ends, 1, 0) };
   bind "<shift><ctrl>e" { "move-cursor" (paragraph-ends, 1, 1) };
 
   bind "<ctrl>w" { "cut-clipboard" () };
