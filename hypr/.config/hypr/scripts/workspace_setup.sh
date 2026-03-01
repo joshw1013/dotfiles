@@ -27,3 +27,6 @@ fi
 for i in {1..7}; do
     hyprctl keyword workspace "$i, monitor:desc:$MAIN_MONITOR"
 done
+
+hyprctl dispatch workspace 8
+hyprctl dispatch workspace 1 # Do last so it is focused
