@@ -12,7 +12,7 @@ CONNECTED_MONITORS=$(hyprctl monitors all -j | jq -r '.[] | .description')
 assign_secondary_workspaces() {
     local target_desc="$1"
     for i in {8..15}; do
-        hyprctl keyword workspace "$i, monitor:desc:$target_desc"
+        hyprctl eval "hl.workspace_rule({workspace = '$i', monitor = 'desc:$target_desc'})"
     done
 }
 
@@ -25,8 +25,10 @@ fi
 
 # Always ensure workspaces 1-7 stay on the main monitor
 for i in {1..7}; do
-    hyprctl keyword workspace "$i, monitor:desc:$MAIN_MONITOR"
+    hyprctl eval "hl.workspace_rule({workspace = '$i', monitor = 'desc:$MAIN_MONITOR'})"
 done
 
-hyprctl dispatch workspace 8
-hyprctl dispatch workspace 1 # Do last so it is focused
+# Currently am using this instead of default monitors, but I believe 
+# they should do the same thing
+hyprctl dispatch 'hl.dsp.focus({ workspace = "8" })'
+hyprctl dispatch 'hl.dsp.focus({ workspace = "1" })' # Do last so it is focused
