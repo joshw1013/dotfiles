@@ -27,7 +27,7 @@ hl.bind(mainMod .. " + SPACE", hl.dsp.submap("clickmode"))
 hl.define_submap("clickmode", function()
 	hl.bind(
 		mainMod .. " + SUPER_L",
-		hl.dsp.exec_cmd("wlrctl pointer click left && hyprctl dispatch submap reset"),
+		hl.dsp.exec_cmd("wlrctl pointer click left && hyprctl dispatch 'hl.dsp.submap(\"reset\")'"),
 		{ release = true, transparent = true }
 	)
 end)

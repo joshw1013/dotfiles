@@ -95,9 +95,10 @@ window#waybar {
   box-shadow: none;
 }
 
-#custom-arch {
+#custom-arch label {
+  font-family: "SpaceMono Nerd Font Propo";
   padding: 0 10px;
-  font-size: 25px;
+  font-size: 22px;
   transition: color 0.5s;
 }
 #custom-arch:hover {

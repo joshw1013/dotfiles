@@ -9,6 +9,7 @@
     "disable-scroll": true,
     "all-outputs": true,
     "warp-on-scroll": false,
+    "tooltip": false,
     "format": "{name}: {icon}",
     "format-icons": {
       "urgent": "",

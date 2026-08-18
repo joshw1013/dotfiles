@@ -6,16 +6,19 @@ local mainMod = "SUPER" -- Sets "Windows" key as main modifier
 
 hl.define_submap("cursor", function()
 	-- Click a spot
-	hl.bind(
-		"u",
-		hl.dsp.exec_cmd(
-			"hyprctl dispatch submap reset && wl-kbptr"
-				.. "&& wlrctl pointer click left && ~/.config/hypr/scripts/center_mouse.sh"
-		)
-	)
+	hl.bind("u", function()
+		hl.dispatch(hl.dsp.submap("reset"))
+		hl.config({ cursor = { hide_on_key_press = true } })
+		hl.dispatch(hl.dsp.exec_cmd("wl-kbptr && wlrctl pointer click left && ~/.config/hypr/scripts/center_mouse.sh"))
+	end)
 	-- OG bind that I don't think I will do much but will see
 	-- Jump cursor to a position
-	hl.bind("a", hl.dsp.exec_cmd("hyprctl dispatch submap reset && wl-kbptr && hyprctl dispatch submap cursor"))
+	hl.bind(
+		"a",
+		hl.dsp.exec_cmd(
+			"hyprctl dispatch 'hl.dsp.submap(\"reset\")' && wl-kbptr && hyprctl dispatch 'hl.dsp.submap(\"cursor\")'"
+		)
+	)
 
 	-- Cursor movement
 	hl.bind("j", hl.dsp.exec_cmd("wlrctl pointer move 0 10"), { repeating = true })
@@ -59,22 +62,26 @@ hl.define_submap("cursor", function()
 	-- If you do not use cursor timeout or cursor:hide_on_key_press, you can delete its respective calls.
 	-- hl.bind("escape", hl.dsp.exec_cmd("hyprctl keyword cursor:inactive_timeout 3; hyprctl keyword cursor:hide_on_key_press true; hyprctl dispatch submap resethyprctl dispatch submap reset"))
 	-- hl.bind("escape", hl.dsp.exec_cmd("hyprctl dispatch submap reset"))
-	hl.bind("escape", hl.dsp.exec_cmd("hyprctl keyword cursor:hide_on_key_press true; hyprctl dispatch submap reset"))
+	hl.bind("escape", function()
+		hl.config({ cursor = { hide_on_key_press = true } })
+		hl.dispatch(hl.dsp.submap("reset"))
+	end)
 end)
 
 -- Entrypoint
 -- If you do not use cursor timeout or cursor:hide_on_key_press, you can delete its respective calls.
-hl.bind(
-	mainMod .. " + O",
-	hl.dsp.exec_cmd(
-		"hyprctl keyword cursor:inactive_timeout 0; hyprctl keyword cursor:hide_on_key_press false; hyprctl dispatch submap cursor"
-	)
-)
+hl.bind(mainMod .. " + O", function()
+	-- hl.dsp.exec_cmd(
+	-- 	"hyprctl keyword cursor:inactive_timeout 0; hyprctl keyword cursor:hide_on_key_press false; hyprctl dispatch submap cursor"
+	-- )
+	hl.config({ cursor = { inactive_timeout = 0, hide_on_key_press = false } })
+	hl.dispatch(hl.dsp.submap("cursor"))
+end)
 
 -- Click a spot, allow this outside of cursor mode)
 hl.bind(
 	mainMod .. " + U",
 	hl.dsp.exec_cmd(
-		"hyprctl dispatch submap reset && wl-kbptr && wlrctl pointer click left && ~/.config/hypr/scripts/center_mouse.sh"
+		[[hyprctl dispatch 'hl.dsp.submap("reset")' && wl-kbptr && wlrctl pointer click left && ~/.config/hypr/scripts/center_mouse.sh]]
 	)
 )
