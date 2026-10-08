@@ -60,6 +60,9 @@ hl.config({
 hl.permission({ binary = "/usr/(lib|libexec|lib64)/xdg-desktop-portal-hyprland", type = "screencopy", mode = "allow" })
 hl.permission({ binary = "/usr/bin/hyprlock", type = "screencopy", mode = "allow" })
 hl.permission({ binary = "/usr/bin/grim", type = "screencopy", mode = "allow" })
+-- computer_use watcher: vision perception watches GIMP's pixels with
+-- zwlr_screencopy copy_with_damage (watcher/state_diff/internal/source/screencopy).
+hl.permission({ binary = "/home/josh/computer_use/watcher/state_diff/state_diff", type = "screencopy", mode = "allow" })
 -- hl.permission("/usr/(bin|local/bin)/hyprpm", "plugin", "allow")
 
 -----------------------

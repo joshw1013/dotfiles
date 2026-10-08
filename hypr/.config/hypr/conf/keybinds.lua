@@ -101,3 +101,7 @@ hl.bind("XF86AudioNext", hl.dsp.exec_cmd("playerctl next"), { locked = true })
 hl.bind("XF86AudioPause", hl.dsp.exec_cmd("playerctl play-pause"), { locked = true })
 hl.bind("XF86AudioPlay", hl.dsp.exec_cmd("playerctl play-pause"), { locked = true })
 hl.bind("XF86AudioPrev", hl.dsp.exec_cmd("playerctl previous"), { locked = true })
+
+local demoSock = " --socket /run/user/1000/cu-eval/watcher.sock"
+hl.bind(mainMod .. " + F9", hl.dsp.exec_cmd("watchctl demo toggle --prompt" .. demoSock))
+hl.bind(mainMod .. " + SHIFT + F9", hl.dsp.exec_cmd("watchctl demo discard" .. demoSock))
